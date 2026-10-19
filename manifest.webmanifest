@@ -1,0 +1,13 @@
+{
+  "name": "Lista Compra",
+  "short_name": "Compra",
+  "description": "Lista de la compra compartida de casa",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2f6fa",
+  "theme_color": "#dcecfb",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

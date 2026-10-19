@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lista Compra</title>
+<meta name="description" content="Lista de la compra compartida de casa">
+<meta name="theme-color" content="#dcecfb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f151b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="titulo">
+    <h1>Lista compra</h1>
+    <span class="count" id="count"></span>
+  </header>
+
+  <p class="cargando" id="cargando">Cargando…</p>
+
+  <!-- Entrar con el correo -->
+  <section class="aviso" id="pantallaLogin" hidden>
+    <h2>Entra con tu correo</h2>
+    <p>Te enviaremos un enlace para entrar. Solo pueden usar la lista los correos de la familia.</p>
+    <form id="formLogin" autocomplete="on">
+      <input type="email" id="email" placeholder="tu-correo@gmail.com" required aria-label="Correo electrónico" autocomplete="email">
+      <button class="add" id="btnLogin" type="submit">Enviar enlace</button>
+    </form>
+    <p id="loginMsg" hidden></p>
+  </section>
+
+  <!-- Correo sin permiso -->
+  <section class="aviso" id="pantallaNoAutorizado" hidden>
+    <h2>Este correo no tiene acceso</h2>
+    <p>Has entrado como <strong id="correoNoAut"></strong>, pero no está en la lista de la familia. Pide a quien gestiona la lista que lo añada.</p>
+    <button class="enlace" id="btnSalirNoAut" type="button">Entrar con otro correo</button>
+  </section>
+
+  <!-- Aplicación -->
+  <div class="panel" id="app" hidden>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tabLista" aria-controls="panelLista" aria-selected="true">Lista</button>
+      <button class="tab" role="tab" id="tabCompra" aria-controls="panelCompra" aria-selected="false">Compra<span class="badge" id="badge" hidden></span></button>
+    </div>
+    <p class="msg" id="msg" hidden></p>
+
+    <!-- Pestaña Lista -->
+    <section class="panel" id="panelLista" role="tabpanel" aria-labelledby="tabLista">
+      <form id="form" autocomplete="off">
+        <div class="campo">
+          <input type="text" id="nuevo" placeholder="Producto (ej. leche)" maxlength="80" aria-label="Producto"
+            role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="sugerencias">
+          <ul class="desplegable" id="sugerencias" role="listbox" hidden></ul>
+        </div>
+        <input type="text" id="cant" placeholder="Cantidad" maxlength="20" aria-label="Cantidad (opcional)">
+        <button class="add" id="btnAdd" type="submit">Añadir</button>
+      </form>
+
+      <section class="frec" id="frecSec" hidden>
+        <div class="frec-head">
+          <h2>Frecuentes</h2>
+          <span class="hint">Toca para añadir</span>
+        </div>
+        <div class="chips" id="chips"></div>
+      </section>
+
+      <div class="empty" id="empty">
+        <strong>Todavía no hay nada en la lista</strong>
+        Escribe un producto arriba y pulsa Añadir. Toda la familia verá la misma lista.
+      </div>
+      <ul class="lista" id="lista" hidden></ul>
+    </section>
+
+    <!-- Pestaña Compra -->
+    <section class="panel" id="panelCompra" role="tabpanel" aria-labelledby="tabCompra" hidden>
+      <div class="empty" id="compraVacia">
+        <strong>No hay ninguna compra en marcha</strong>
+        Cuando vayáis a comprar, pulsa Hacer compra en la pestaña Lista y los productos aparecerán aquí para irlos marcando.
+      </div>
+      <div class="panel" id="compraBox" hidden>
+        <div class="compra-head">
+          <h2 id="compraFecha">Compra</h2>
+          <span class="progreso" id="progreso"></span>
+        </div>
+        <ul class="lista" id="compraLista"></ul>
+        <button class="terminar" id="btnTerminar" type="button">Terminar compra</button>
+        <span class="hint">Al terminar, lo que no hayas marcado vuelve a la lista.</span>
+      </div>
+    </section>
+
+    <footer class="pie">
+      <span id="quien"></span>
+      <button class="enlace" id="btnSalir" type="button">Cerrar sesión</button>
+    </footer>
+  </div>
+</div>
+
+<div class="flotante" id="flotante" hidden>
+  <div class="confirmar" id="confirmar" hidden>
+    <p id="confirmarTxt"></p>
+    <div class="botones">
+      <button class="no" id="btnNo" type="button">Cancelar</button>
+      <button class="si" id="btnSi" type="button">Sí, hacer compra</button>
+    </div>
+  </div>
+  <button class="hacer" id="btnHacer" type="button">Hacer compra</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
