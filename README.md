@@ -41,7 +41,7 @@ Es una web estática (HTML, CSS y JavaScript, sin build). Se publica en **Vercel
 ### 2. Conectar la web con Supabase
 
 1. En Supabase ve a **Project Settings → API** (en algunos proyectos se llama **Data API** o **API Keys**).
-2. Copia la **Project URL** y la clave **anon public** (en proyectos nuevos puede llamarse **publishable key**).
+2. Copia la **Project URL** y la clave **publishable key** (`sb_publishable_…`; en proyectos antiguos se llama **anon public**).
 3. Edita `config.js` en GitHub (icono del lápiz) y pega los dos valores:
 
    ```js
