@@ -34,7 +34,7 @@ body{color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.45;
 .panel{display:flex;flex-direction:column;gap:18px}
 
 .titulo{background:var(--title-bg);border:2px solid var(--title-line);border-radius:14px;
-  padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0}
+  padding:18px 20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:6px;min-width:0}
 /* Cabecera: recuadro del título a la izquierda y botón Hacer compra aparte, a la derecha, a la misma altura */
 h1{font-family:var(--display);font-weight:800;font-size:clamp(1.4rem, 7.5vw, 1.9rem);white-space:nowrap;letter-spacing:.06em;margin:0;
   color:var(--title-fg);text-transform:uppercase;line-height:1.1}
