@@ -34,9 +34,11 @@ body{color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.45;
 .panel{display:flex;flex-direction:column;gap:18px}
 
 .titulo{background:var(--title-bg);border:2px solid var(--title-line);border-radius:14px;
-  padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 12px}
-.titulo-texto{display:flex;flex-direction:column;gap:6px;min-width:0}
-h1{font-family:var(--display);font-weight:800;font-size:1.9rem;letter-spacing:.06em;margin:0;
+  padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0}
+/* Cabecera: recuadro del título a la izquierda y botón Hacer compra aparte, a la derecha, a la misma altura */
+.cabecera{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px}
+.cabecera:has(> .flotante[hidden]){grid-template-columns:1fr}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem, 7vw, 1.9rem);letter-spacing:.06em;margin:0;
   color:var(--title-fg);text-transform:uppercase;line-height:1.1}
 .count{color:var(--title-fg);opacity:.8;font-size:.9rem;font-variant-numeric:tabular-nums}
 h2{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:0}
@@ -105,10 +107,11 @@ input,select,textarea{font-size:16px}
   border-radius:10px;padding:10px 16px;font-weight:600}
 .terminar:hover{border-color:var(--green-line)}
 
-/* Botón Hacer compra (arriba a la derecha, dentro del título) y confirmación */
-.flotante{position:relative;justify-self:end}
+/* Botón Hacer compra (recuadro verde propio, arriba a la derecha) y confirmación */
+.flotante{position:relative;display:flex}
 .hacer{border:2px solid var(--green-line);background:var(--green-bg);color:var(--green-fg);
-  border-radius:999px;padding:10px 16px;font-weight:700;font-size:.95rem;white-space:nowrap}
+  border-radius:12px;padding:18px 18px;font-weight:700;font-size:1.05rem;line-height:1.2;
+  white-space:nowrap;text-align:center;box-shadow:var(--shadow)}
 .confirmar{position:absolute;z-index:20;top:calc(100% + 10px);right:0}
 .hacer:hover{background:color-mix(in srgb, var(--green-line) 18%, var(--green-bg))}
 .hacer:focus-visible{outline-color:var(--green-line)}
