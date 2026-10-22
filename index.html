@@ -24,6 +24,18 @@
     <span class="count" id="count"></span>
   </header>
 
+  <!-- Botón Hacer compra, arriba a la derecha bajo el título -->
+  <div class="flotante" id="flotante" hidden>
+    <button class="hacer" id="btnHacer" type="button">Hacer compra</button>
+    <div class="confirmar" id="confirmar" hidden>
+      <p id="confirmarTxt"></p>
+      <div class="botones">
+        <button class="no" id="btnNo" type="button">Cancelar</button>
+        <button class="si" id="btnSi" type="button">Sí, hacer compra</button>
+      </div>
+    </div>
+  </div>
+
   <p class="cargando" id="cargando">Cargando…</p>
 
   <!-- Entrar con el correo -->
@@ -105,18 +117,6 @@
         <button class="salir" id="btnSalir" type="button">Cerrar sesión</button>
       </div>
     </footer>
-  </div>
-</div>
-
-<!-- Botón Hacer compra, fijo abajo a la derecha -->
-<div class="flotante" id="flotante" hidden>
-  <button class="hacer" id="btnHacer" type="button">Hacer compra</button>
-  <div class="confirmar" id="confirmar" hidden>
-    <p id="confirmarTxt"></p>
-    <div class="botones">
-      <button class="no" id="btnNo" type="button">Cancelar</button>
-      <button class="si" id="btnSi" type="button">Sí, hacer compra</button>
-    </div>
   </div>
 </div>
 
