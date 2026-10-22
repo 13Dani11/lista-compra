@@ -19,21 +19,9 @@
 <body>
 
 <div class="wrap">
-  <header class="cabecera">
-    <div class="titulo">
-      <h1>Lista compra</h1>
-      <span class="count" id="count"></span>
-    </div>
-    <div class="flotante" id="flotante" hidden>
-      <button class="hacer" id="btnHacer" type="button">Hacer compra</button>
-      <div class="confirmar" id="confirmar" hidden>
-        <p id="confirmarTxt"></p>
-        <div class="botones">
-          <button class="no" id="btnNo" type="button">Cancelar</button>
-          <button class="si" id="btnSi" type="button">Sí, hacer compra</button>
-        </div>
-      </div>
-    </div>
+  <header class="titulo">
+    <h1>Lista compra</h1>
+    <span class="count" id="count"></span>
   </header>
 
   <p class="cargando" id="cargando">Cargando…</p>
@@ -117,6 +105,18 @@
         <button class="salir" id="btnSalir" type="button">Cerrar sesión</button>
       </div>
     </footer>
+  </div>
+</div>
+
+<!-- Botón Hacer compra, fijo abajo a la derecha -->
+<div class="flotante" id="flotante" hidden>
+  <button class="hacer" id="btnHacer" type="button">Hacer compra</button>
+  <div class="confirmar" id="confirmar" hidden>
+    <p id="confirmarTxt"></p>
+    <div class="botones">
+      <button class="no" id="btnNo" type="button">Cancelar</button>
+      <button class="si" id="btnSi" type="button">Sí, hacer compra</button>
+    </div>
   </div>
 </div>
 
