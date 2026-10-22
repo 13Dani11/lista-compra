@@ -245,7 +245,7 @@ function renderFlotante(){
   if (!visible) $('confirmar').hidden = true;
 }
 $('btnHacer').onclick = () => {
-  $('confirmarTxt').textContent = 'Se moverán ' + plural(items.length, 'producto', 'productos') +
+  $('confirmarTxt').textContent = (items.length === 1 ? 'Se moverá ' : 'Se moverán ') + plural(items.length, 'producto', 'productos') +
     ' a la pestaña Compra y la lista quedará vacía para todos.';
   $('confirmar').hidden = false;
   $('btnSi').focus();

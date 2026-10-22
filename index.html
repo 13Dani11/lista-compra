@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Lista Compra</title>
 <meta name="description" content="Lista de la compra compartida de casa">
+<meta name="format-detection" content="telephone=no,email=no">
 <meta name="theme-color" content="#dcecfb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f151b" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -19,8 +20,20 @@
 
 <div class="wrap">
   <header class="titulo">
-    <h1>Lista compra</h1>
-    <span class="count" id="count"></span>
+    <div class="titulo-texto">
+      <h1>Lista compra</h1>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="flotante" id="flotante" hidden>
+      <button class="hacer" id="btnHacer" type="button">Hacer compra</button>
+      <div class="confirmar" id="confirmar" hidden>
+        <p id="confirmarTxt"></p>
+        <div class="botones">
+          <button class="no" id="btnNo" type="button">Cancelar</button>
+          <button class="si" id="btnSi" type="button">Sí, hacer compra</button>
+        </div>
+      </div>
+    </div>
   </header>
 
   <p class="cargando" id="cargando">Cargando…</p>
@@ -100,17 +113,6 @@
       <button class="enlace" id="btnSalir" type="button">Cerrar sesión</button>
     </footer>
   </div>
-</div>
-
-<div class="flotante" id="flotante" hidden>
-  <div class="confirmar" id="confirmar" hidden>
-    <p id="confirmarTxt"></p>
-    <div class="botones">
-      <button class="no" id="btnNo" type="button">Cancelar</button>
-      <button class="si" id="btnSi" type="button">Sí, hacer compra</button>
-    </div>
-  </div>
-  <button class="hacer" id="btnHacer" type="button">Hacer compra</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
