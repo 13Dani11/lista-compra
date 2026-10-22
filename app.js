@@ -90,6 +90,14 @@ $('tabCompra').onclick = () => irA('compra');
 
 /* ---------- Lista ---------- */
 function render(){
+  // Si alguien está escribiendo una cantidad, no se reconstruye la lista (cerraría el teclado);
+  // se vuelve a pintar al terminar de editar.
+  const editor = editando && $('qty-' + editando);
+  if (editor && document.activeElement === editor){
+    $('count').textContent = items.length ? plural(items.length, 'producto', 'productos') : '';
+    renderFrecuentes(); renderFlotante();
+    return;
+  }
   lista.replaceChildren();
   for (const it of items){
     const li = document.createElement('li');
@@ -106,13 +114,18 @@ function render(){
       });
       e.addEventListener('blur', guardar);
       li.append(e);
-      requestAnimationFrame(() => e.focus());
     } else {
       const q = document.createElement('button'); q.type = 'button';
       q.className = 'qty' + (it.qty ? ' set' : '');
       q.textContent = it.qty || '+ cant.';
       q.setAttribute('aria-label', it.qty ? 'Cambiar cantidad: ' + it.qty : 'Añadir cantidad');
-      q.onclick = () => { editando = it.id; render(); };
+      q.onclick = () => {
+        editando = it.id;
+        render();
+        // El foco tiene que darse dentro del mismo toque: si no, el iPhone no abre el teclado
+        const e = $('qty-' + it.id);
+        if (e){ e.focus(); const n = e.value.length; try { e.setSelectionRange(n, n); } catch(_){} }
+      };
       li.append(q);
     }
     const b = document.createElement('button'); b.className = 'del'; b.type = 'button';
