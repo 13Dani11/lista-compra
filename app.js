@@ -338,6 +338,17 @@ $('formLogin').addEventListener('submit', async ev => {
 });
 async function salir(){ await sb.auth.signOut(); location.reload(); }
 $('btnSalir').onclick = salir;
+
+/* Menú de ajustes (abajo a la izquierda) */
+function menuAjustes(abrir){
+  $('menuAjustes').hidden = !abrir;
+  $('btnAjustes').setAttribute('aria-expanded', abrir);
+}
+$('btnAjustes').onclick = ev => { ev.stopPropagation(); menuAjustes($('menuAjustes').hidden); };
+document.addEventListener('click', ev => {
+  if (!$('menuAjustes').hidden && !$('menuAjustes').contains(ev.target)) menuAjustes(false);
+});
+document.addEventListener('keydown', ev => { if (ev.key === 'Escape') menuAjustes(false); });
 $('btnSalirNoAut').onclick = salir;
 
 async function iniciar(session){
